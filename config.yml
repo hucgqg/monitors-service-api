@@ -1,0 +1,7 @@
+service:
+  dingding:
+    webhook:
+  feishu:
+    apiUrl: https://open.feishu.cn
+    appId:
+    appSecret:
