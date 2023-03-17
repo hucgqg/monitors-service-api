@@ -1,7 +1,6 @@
 package main
 
 import (
-	"monitors-service-api/controllers/flink"
 	"monitors-service-api/routers"
 
 	"github.com/gin-gonic/gin"
@@ -17,9 +16,9 @@ func main() {
 	routers.DingRouterInit(r)
 	routers.FlinkRouterInit(r)
 
-	go func() {
-		flink.TickerMonitor()
-	}()
+	// go func() {
+	// 	flink.TickerMonitor()
+	// }()
 
 	err := r.Run(":8081")
 	if err != nil {

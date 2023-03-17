@@ -5,6 +5,7 @@ go 1.18
 require (
 	gitee.com/hcqcode/requests v0.0.0-20230111083450-ae3b5df84eae
 	github.com/gin-gonic/gin v1.8.1
+	github.com/hucgqg/requests v0.0.0-20230316005030-cd6e9f2d60e5
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
 )
 
