@@ -2,7 +2,7 @@ package flink
 
 import (
 	"fmt"
-	"monitors-service-api/models"
+	"monitors-service-api-gitee/models"
 	"net/http"
 	"time"
 

@@ -1,8 +1,7 @@
 package utils
 
 import (
-	"fmt"
-	"reflect"
+	"encoding/json"
 
 	"github.com/hucgqg/requests"
 )
@@ -10,24 +9,8 @@ import (
 // 将struct转成map[string]interface{}
 func Struct2Map(b any) (map[string]interface{}, error) {
 	data := make(map[string]interface{})
-	objT := reflect.TypeOf(b)
-
-	fmt.Println("------------ objT", objT)
-	fmt.Println("------------ objT.NumField()", objT.NumField())
-	objV := reflect.ValueOf(b)
-	fmt.Println("------------ objV", objV)
-
-	for i := 0; i < objT.NumField(); i++ {
-		fileName, ok := objT.Field(i).Tag.Lookup("json")
-		if ok {
-
-			fmt.Println("------------ objV.Field(i).Interface()", objV.Field(i).Interface())
-
-			data[fileName] = objV.Field(i).Interface()
-		} else {
-			data[objT.Field(i).Name] = objV.Field(i).Interface()
-		}
-	}
+	j, _ := json.Marshal(b)
+	json.Unmarshal(j, &data)
 	return data, nil
 }
 
@@ -38,14 +21,13 @@ func SendMessage(url, ruleName, title, message string) {
 		"title":    title,
 		"message":  message,
 	}
-	request := requests.Request{
-		Url:       &url,
-		Method:    "POST",
-		Data:      &data,
-		Headers:   &map[string]string{},
-		BasicAuth: &map[string]string{},
+
+	r := requests.Request{
+		Url:    url,
+		Method: "POST",
+		Data:   data,
 	}
-	if err := request.Body(); err != nil {
+	if err := r.Body(); err != nil {
 		panic(err)
 	}
 }

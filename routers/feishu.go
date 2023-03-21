@@ -1,9 +1,10 @@
 package routers
 
 import (
+	"monitors-service-api-gitee/controllers/feishu"
+	"monitors-service-api-gitee/middleware"
+
 	"github.com/gin-gonic/gin"
-	"monitors-service-api/controllers/feishu"
-	"monitors-service-api/middleware"
 )
 
 func FeishuRouterInit(r *gin.Engine) {

@@ -2,10 +2,10 @@ package flink
 
 import (
 	"fmt"
-	"monitors-service-api/utils"
+	"monitors-service-api-gitee/utils"
 	"time"
 
-	"gitee.com/hcqcode/requests"
+	"github.com/hucgqg/requests"
 )
 
 var (
@@ -35,14 +35,13 @@ func TickerMonitor() {
 				"picUrl":     "",
 			}
 			basicAuth := map[string]string{"admin": "M473f5eef2d5ced_"}
-			request := requests.Request{
-				Url:       &dingUrl,
+			r := requests.Request{
+				Url:       dingUrl,
 				Method:    "POST",
-				Headers:   &map[string]string{},
-				Data:      &data,
-				BasicAuth: &basicAuth,
+				Data:      data,
+				BasicAuth: basicAuth,
 			}
-			request.Body()
+			r.Body()
 		}
 	}
 }

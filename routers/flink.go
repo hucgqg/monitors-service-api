@@ -1,8 +1,8 @@
 package routers
 
 import (
-	"monitors-service-api/controllers/flink"
-	"monitors-service-api/middleware"
+	"monitors-service-api-gitee/controllers/flink"
+	"monitors-service-api-gitee/middleware"
 
 	"github.com/gin-gonic/gin"
 )

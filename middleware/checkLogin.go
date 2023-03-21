@@ -2,7 +2,7 @@ package middleware
 
 import (
 	"encoding/base64"
-	"monitors-service-api/models"
+	"monitors-service-api-gitee/models"
 	"net/http"
 	"strings"
 	"time"
