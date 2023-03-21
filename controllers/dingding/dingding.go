@@ -1,16 +1,13 @@
 package dingding
 
 import (
-	"encoding/json"
-	"fmt"
-	"monitors-service-api/models"
-	"monitors-service-api/utils"
+	"monitors-service-api-gitee/models"
+	"monitors-service-api-gitee/utils"
 	"net/http"
 	"time"
 
-	"github.com/hucgqg/requests"
-
 	"github.com/gin-gonic/gin"
+	"github.com/hucgqg/requests"
 )
 
 type DingMessage struct{}
@@ -24,16 +21,17 @@ func (d DingMessage) SendLink(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, &resp)
 		return
 	}
-	l, _ := json.Marshal(&link)
-	data, err := utils.Struct2Map(l)
-	fmt.Println("---- dingding  data  Struct2Map", data)
+	data, err := utils.Struct2Map(link)
 	if err != nil {
 		resp.Msg = err.Error()
 		c.JSON(http.StatusBadRequest, &resp)
 		return
 	}
-	json.Unmarshal(l, &d)
-	r := requests.Request{Data: &data, Method: "POST", Url: &link.Link.Webhook, Headers: &map[string]string{}}
+	r := requests.Request{
+		Data:   data,
+		Method: "POST",
+		Url:    link.Link.Webhook,
+	}
 	r.Body()
 	if r.RepInfo["errcode"] != 0.0 {
 		resp.Msg = r.RepInfo["errmsg"].(string)

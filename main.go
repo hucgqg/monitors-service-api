@@ -1,7 +1,7 @@
 package main
 
 import (
-	"monitors-service-api/routers"
+	"monitors-service-api-gitee/routers"
 
 	"github.com/gin-gonic/gin"
 )
@@ -20,7 +20,7 @@ func main() {
 	// 	flink.TickerMonitor()
 	// }()
 
-	err := r.Run(":8081")
+	err := r.Run()
 	if err != nil {
 		return
 	}

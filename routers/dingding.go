@@ -1,9 +1,10 @@
 package routers
 
 import (
+	"monitors-service-api-gitee/controllers/dingding"
+	"monitors-service-api-gitee/middleware"
+
 	"github.com/gin-gonic/gin"
-	"monitors-service-api/controllers/dingding"
-	"monitors-service-api/middleware"
 )
 
 func DingRouterInit(r *gin.Engine) {
