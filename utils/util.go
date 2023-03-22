@@ -21,7 +21,6 @@ func SendMessage(url, ruleName, title, message string) {
 		"title":    title,
 		"message":  message,
 	}
-
 	r := requests.Request{
 		Url:    url,
 		Method: "POST",

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"monitors-service-api-gitee/controllers/flink"
 	"monitors-service-api-gitee/routers"
 
 	"github.com/gin-gonic/gin"
@@ -8,7 +9,7 @@ import (
 
 func main() {
 	// 生产环境模式
-	// gin.SetMode(gin.ReleaseMode)
+	gin.SetMode(gin.ReleaseMode)
 
 	r := gin.Default()
 
@@ -16,9 +17,9 @@ func main() {
 	routers.DingRouterInit(r)
 	routers.FlinkRouterInit(r)
 
-	// go func() {
-	// 	flink.TickerMonitor()
-	// }()
+	go func() {
+		flink.TickerMonitor()
+	}()
 
 	err := r.Run()
 	if err != nil {
