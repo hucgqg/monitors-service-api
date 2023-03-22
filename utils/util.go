@@ -7,10 +7,10 @@ import (
 )
 
 // 将struct转成map[string]interface{}
-func Struct2Map(b any) (map[string]interface{}, error) {
+func Struct2Map(d any) (map[string]interface{}, error) {
 	data := make(map[string]interface{})
-	j, _ := json.Marshal(b)
-	json.Unmarshal(j, &data)
+	b, _ := json.Marshal(d)
+	json.Unmarshal(b, &data)
 	return data, nil
 }
 

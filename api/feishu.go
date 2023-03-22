@@ -6,19 +6,18 @@ import (
 	"fmt"
 	"io"
 	"mime/multipart"
-	"monitors-service-api-gitee/models"
 	"os"
 	"path/filepath"
 
 	"github.com/hucgqg/requests"
+	"github.com/spf13/viper"
 )
 
 func GetTenantAccessToken() string {
-	conf := models.Config{}
-	url := conf.GetConfig().Service.Feishu.ApiUrl + "/open-apis/auth/v3/tenant_access_token/internal"
+	url := viper.GetString("fieshu.apiUrl") + "/open-apis/auth/v3/tenant_access_token/internal"
 	data := map[string]interface{}{
-		"app_id":     conf.GetConfig().Service.Feishu.AppId,
-		"app_secret": conf.GetConfig().Service.Feishu.AppSecret,
+		"app_id":     viper.GetString("fieshu.appId"),
+		"app_secret": viper.GetString("fieshu.appSecret"),
 	}
 	r := requests.Request{
 		Url:    url,
@@ -30,8 +29,7 @@ func GetTenantAccessToken() string {
 }
 
 func GetImageKey(imagePath string) (string, error) {
-	conf := models.Config{}
-	uRL := conf.GetConfig().Service.Feishu.ApiUrl + "/open-apis/im/v1/images"
+	uRL := viper.GetString("fieshu.apiUrl") + "/open-apis/im/v1/images"
 	payload := &bytes.Buffer{}
 	writer := multipart.NewWriter(payload)
 	_ = writer.WriteField("image_type", "message")

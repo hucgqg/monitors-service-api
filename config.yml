@@ -1,7 +1,16 @@
-service:
-  dingding:
-    webhook:
-  feishu:
-    apiUrl: https://open.feishu.cn
-    appId:
-    appSecret:
+username: admin
+password: 123456
+localDingdingUrl: http://localhost:8080/ding/sendLink
+flink:
+  # 关闭监控告警地址
+  closeUrl: http://localhost:8080/flink/delJobName/
+  # 云监控电话报警地址
+  monitorUrl:
+  # 发送报警的钉钉群webhook
+  monitorDingWebhook:
+  # 多长时间检查一次flink的jobname是否正常调用（单位：秒）
+  timeTicker: 180
+feishu:
+  apiUrl: https://open.feishu.cn
+  appId:
+  appSecret:

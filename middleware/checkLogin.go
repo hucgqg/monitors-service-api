@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/spf13/viper"
 )
 
 func Auth() gin.HandlerFunc {
@@ -36,7 +37,6 @@ func doAuth(c *gin.Context) bool {
 	if len(pair) != 2 {
 		return false
 	}
-
 	return checkPassword(pair[0], pair[1])
 }
 
@@ -48,5 +48,5 @@ func requireAuth(c *gin.Context) {
 }
 
 func checkPassword(username, password string) bool {
-	return username == "admin" && password == "123456"
+	return username == viper.GetString("username") && password == viper.GetString("password")
 }
