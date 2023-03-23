@@ -1,3 +1,5 @@
+# 服务启动使用端口默认为 8080
+port:
 username: admin
 password: 123456
 localDingdingUrl: http://localhost:8080/ding/sendLink
