@@ -6,4 +6,3 @@ COPY config.yml /opt/
 RUN mkdir upload
 EXPOSE 8080
 ENTRYPOINT [ "./monitors-service-api" ]
-
